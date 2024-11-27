@@ -1,0 +1,44 @@
+<div style="text-align:center" class="album py-5 bg-light">
+    <!-- Bootstrapのグリッドシステムを適用　-->
+    <h4>{{user.username}}さん、ようこそ</h4>
+    <div class="container">
+      <!-- 行要素を配置-->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for record in object_list %}
+        <!-- 列要素を配置-->
+        <div class="col">
+          <div class="card shadow-sm">
+            <!-- svgタグをimgに変更
+                  src属性を追加して１枚目のイメージのURLを設定　-->
+            <svg class="bd-placeholder-img card-img-top"
+                 width="100%" height="225" 
+                 xmlns="http://www.w3.org/2000/svg" 
+                 role="img" aria-label="Placeholder: Thumbnail" 
+                 preserveAspectRatio="xMidYMid slice" 
+                 focusable="false">
+                 <title>Placeholder</title>
+                 <rect width="100%" height="100%" fill="#55595c"/>
+            </svg>
+            <!-- タイトルとボタンを出力するブロック　-->
+            <div class="card-body">
+              <!-- titleフィールドを出力-->
+              <p class="card-text">{{record.condition}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary"onclick="location.href='{% url 'pims:record_detail' record.pk %}'">詳細</button>
+                </div>
+                <!-- 記録したユーザーを出力-->
+                <a href="{% url 'pims:user_list' user=record.user.id %}"><small class="text-muted">{{record.user.username}}</small>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- 列要素ここまで　-->
+        </div>
+        {% endfor %}
+      <!-- 行要素ここまで　-->
+      </div>
+    <!-- グリッドシステムここまで -->
+    </div>
+  </div>

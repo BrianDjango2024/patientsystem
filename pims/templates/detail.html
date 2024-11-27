@@ -1,0 +1,68 @@
+<!-- ベーステンプレートを適用する　-->
+{% extends 'base.html' %}
+<!-- ヘッダー情報のページタイトルを設定する　-->
+{% block title %}記録の詳細{% endblock %}
+
+    {% block contents %}
+    <!-- Bootstrapのグリッドシステム　-->
+    <br>
+    <div class="container">
+        <!-- 行を配置　-->
+        <div class="row">
+            <!-- 列の左右に余白offset-3を入れる -->
+             <div class="col offset-3">
+                <table>
+                    <tr>
+                        <th>記録時間</th>
+                        <td>{{ object.record_at }}</td>
+                    </tr>
+                    <tr>
+                        <th>担当医</th>
+                        <td>{{ object.user }}</td>
+                    </tr>
+                    <tr>
+                        <th>診療科</th>
+                        <td>{{ object.specialist }}</td>    
+                    </tr>
+                    <tr>
+                        <th>患者氏名</th>
+                        <td>{{ object.patient_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>生年月日</th>
+                        <td>{{ object.birthday }}</td>
+                    </tr>
+                    <tr>
+                        <th>性別</th>
+                        <td>{{ object.gender }}</td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td>{{ object.tel_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td>{{ object.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>病状</th>
+                        <td>{{ object.condition }}</td>
+                    </tr>
+                </table>
+
+                {% if object.image1 %}
+                    <p><img src="{{ object.image1.url }}"></img></p>
+                {% endif %}
+
+                {% if object.image2 %}
+                    <p><img src="{{ object.image2.url }}"></img></p>
+                {% endif %}
+
+                {% if object.image3 %}
+                    <p><img src="{{ object.image3.url }}"></img></p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

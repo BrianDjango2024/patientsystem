@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}患者情報システム{% endblock %}
+
+    {% block contents %}
+
+    {% include "pims_title.html" %}
+
+    {% if user.is_authenticated %}
+
+        {% include "pims_list.html" %}
+
+        {% include "pagination.html" %}
+    
+    {% endif %}
+
+    {% endblock %}
